@@ -1,0 +1,12 @@
+# About VSCode 
+.history
+.vscode
+
+# Dependencies
+node_modules
+
+# Environment
+.env
+
+# File folder
+files
