@@ -11,7 +11,7 @@
 # 標準エラー出力：/tmp/hanako-san-error.log
 
 # 毎分実行（テスト用）
-* * * * * root sh /hanako-san/shell/hanako-san.sh 1>/tmp/hanako-san.log 2>/tmp/hanako-san-err.log
+#* * * * * root sh /hanako-san/shell/hanako-san.sh 1>/tmp/hanako-san.log 2>/tmp/hanako-san-err.log
 
 # 毎時 55 分に実行
-# 55 * * * * root sh /hanako-san/shell/hanako-san.sh 1>/tmp/hanako-san.log 2>/tmp/hanako-san-err.log
+55 * * * * root sh /hanako-san/shell/hanako-san.sh 1>/tmp/hanako-san.log 2>/tmp/hanako-san-err.log
