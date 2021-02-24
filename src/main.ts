@@ -124,7 +124,7 @@ function streamToJson(decodedStreamCsv: Stream) {
 
     const parser = parse({ columns }, (err, data) => {
         if (typeof err !== 'undefined') {
-            console.log('Parse to JSON was failed.');
+            console.log(`Parse to JSON was failed.\n${err}`);
             sendToSlack(
                 '花粉データの変換に失敗しました。',
                 ':woman-gesturing-no:'
