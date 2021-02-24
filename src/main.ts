@@ -81,13 +81,13 @@ function messageFormatting(json: Array<{ [key: string]: string }>): string {
     const speedOfWind = data[windSpeed];
     const temp = data[temperature];
 
-    return `${moment(`${today} ${time}`).format(
-        'YYYY年MM月DD日 【kk時】'
-    )}の${prefecture} ${town}の花粉飛散量は${pollenLevel(
+    return `${moment(`${today} ${time}`).format('YYYY年MM月DD日')}\n${moment(
+        `${today} ${time}`
+    ).format('kk時')}の${prefecture} ${town}の花粉飛散量は${pollenLevel(
         pollen
     )}（ ${pollen} 個/m3 ）でした。\n気温は ${temp} ℃、風向は${
         compassPoint[directionOfWind]
-    }、風速は秒速 ${speedOfWind} メートルです。\n\n※ この情報は環境省が公開する花粉観測システム（はなこ）さんが提供する情報をもとに作成しています\nはなこさん：http://kafun.taiki.go.jp/index.aspx`;
+    }、風速は秒速 ${speedOfWind} メートルです。\n\n※ このメッセージは環境省が公開する花粉観測システム（はなこさん）が提供する情報をもとに作成しています\nはなこさん：http://kafun.taiki.go.jp/index.aspx`;
 }
 
 function sendToSlack(message: string, icon?: string) {
