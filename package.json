@@ -1,11 +1,10 @@
 {
-    "name": "easetypescript",
+    "name": "hanako-san",
     "version": "1.0.0",
     "description": "",
     "main": "src/main.js",
     "dependencies": {
-        "ts-node": "^9.1.1",
-        "xmlhttprequest": "^1.8.0"
+        "ts-node": "^9.1.1"
     },
     "devDependencies": {
         "@slack/webhook": "^6.0.0",
@@ -22,9 +21,11 @@
         "iconv-lite": "^0.6.2",
         "moment": "^2.29.1",
         "prettier": "^2.2.1",
-        "typescript": "^4.1.5"
+        "tsconfig-paths": "^3.9.0",
+        "typescript": "^4.2.2"
     },
     "scripts": {
+        "build": "mkdir -p files/csv && npm install",
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node --loader ts-node / esm.mjs --experimental-top-level-await index.ts",
         "lint": "eslint . --ext ts --fix"
