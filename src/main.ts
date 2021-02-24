@@ -5,7 +5,7 @@ import * as Path from 'path';
 import { ResponseInner } from './types/response';
 import { BindValiables } from './types/request';
 import iconv from 'iconv-lite';
-import csv from 'csv';
+import parse from 'csv-parse';
 import moment from 'moment';
 import { Stream } from 'node:stream';
 import { IncomingWebhook } from '@slack/webhook';
@@ -122,7 +122,7 @@ function streamToJson(decodedStreamCsv: Stream) {
         radarPrecipitation,
     ];
 
-    const parser = csv.parse({ columns }, (err, data) => {
+    const parser = parse({ columns }, (err, data) => {
         if (typeof err !== 'undefined') {
             console.log('Parse to JSON was failed.');
             sendToSlack(
