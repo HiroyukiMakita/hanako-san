@@ -16,8 +16,8 @@ RUN curl -sL https://rpm.nodesource.com/setup_lts.x | bash - && \
 # タイムゾーン変更
 RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime 
 
-# cron ファイルを cron.d/ に追加する
-ADD cron/hanako-san /etc/cron.d/hanako-san
+# cron ファイルを cron.d/ にコピーする
+COPY cron/hanako-san /etc/cron.d/hanako-san
 
 # 実行できるように権限を付ける
 # chmod rw-r--r-- 
@@ -29,3 +29,4 @@ RUN chmod 644 /etc/cron.d/hanako-san && \
 RUN touch /tmp/hanako-san.log && \
     touch /tmp/hanako-san-err.log
 
+COPY package.json /hanako-san/package.json
