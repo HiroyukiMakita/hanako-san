@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cd /var/www/hanako-san/
+# /hanako-san から相対パスで実行しないとエラーが出るので移動
+cd /hanako-san
 
-node_modules/.bin/ts-node -r tsconfig-paths/register
-
-node_modules/.bin/ts-node src/main.ts
+# --project で 参照する tsconfig を指定（これがないとエラーになる）
+node_modules/.bin/ts-node --project tsconfig.json src/main.ts
