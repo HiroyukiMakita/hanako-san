@@ -15,3 +15,4 @@
 
 # 毎時 55 分に実行
 55 * * * * root sh /hanako-san/shell/hanako-san.sh 1>/tmp/hanako-san.log 2>/tmp/hanako-san-err.log
+
