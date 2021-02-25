@@ -30,5 +30,8 @@ $ docker-compose build && docker-compose up -d && docker-compose exec linux bash
 ### crond が動いてるか確認するコマンド
 `systemctl status crond.service`
 
-### systemd のログ `-b`(起動時からのログすべて) を `less` コマンドで表示
-`journalctl -b | less`
+### systemd のログを `less` コマンドで表示
+-  `-b`(起動時からのログすべて)   
+`journalctl -b | less`  
+-  `-r`(出力順を逆にする) `-u cron`(systemd ユニットを指定)   
+`journalctl -r -u cron | less`
