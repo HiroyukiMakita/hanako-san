@@ -4,4 +4,5 @@
 cd /hanako-san
 
 # --project で 参照する tsconfig を指定（これがないとエラーになる）
-node_modules/.bin/ts-node --project tsconfig.json src/main.ts
+# node_modules/.bin/ts-node --project tsconfig.json src/main.ts
+npm run batch src/main.ts

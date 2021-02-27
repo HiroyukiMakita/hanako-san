@@ -26,6 +26,7 @@
     },
     "scripts": {
         "build": "mkdir -p files/csv && npm install",
+        "batch": "ts-node --project tsconfig.json",
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node --loader ts-node / esm.mjs --experimental-top-level-await index.ts",
         "lint": "eslint . --ext ts --fix"
