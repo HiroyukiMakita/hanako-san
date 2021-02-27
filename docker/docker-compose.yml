@@ -1,7 +1,7 @@
-version: "3"
+version: '3'
 services:
   linux:
-    build: 
+    build:
       # Dockerfile でホスト側のファイルをいじるときには、context を渡す必要がある
       context: ../
       # context を指定した場合は、dockerfile は context の場所からの指定
@@ -14,10 +14,16 @@ services:
     # コンテナを起動したままにする
     tty: true
     volumes:
-    # プロジェクトルート
+      # プロジェクトルート
       - ../:/hanako-san
+      # cron.d
+      - ../cron/hanako-san:/etc/cron.d/hanako-san
+      # 標準出力
+      - ../files/logs/hanako-san.log:/tmp/hanako-san.log
+      # 標準エラー出力
+      - ../files/logs/hanako-san-err.log:/tmp/hanako-san-err.log
       # ro(Read-Only)でマウント cgroup（コントロールグループ）
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     # ケーパビリティ（root が持つ権限）の追加
     cap_add:
-            - SYS_ADMIN
+      - SYS_ADMIN
