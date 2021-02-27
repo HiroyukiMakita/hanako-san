@@ -83,7 +83,7 @@ function messageFormatting(json: Array<{ [key: string]: string }>): string {
 
     return `${moment(`${today} ${time}`).format('YYYY年MM月DD日')}\n${moment(
         `${today} ${time}`
-    ).format('kk時')}の${prefecture} ${town}の花粉飛散量は${pollenLevel(
+    ).format('HH時')}台の${prefecture} ${town}の花粉飛散量は${pollenLevel(
         pollen
     )}（ ${pollen} 個/m3 ）でした。\n気温は ${temp} ℃、風向は${
         compassPoint[directionOfWind]
@@ -168,19 +168,31 @@ async function downloadCsv() {
     // 花粉データの測定開始日
     const startTime: string = moment('2021-02-01 01').format('YYYYMMDDhh');
 
-    const now = moment().add('-1', 'hour');
+    const now = moment();
+    const hourNow = now.format('k');
+    const minuteNow = now.format('mm');
+    const yesterday = now.clone().add('-1', 'day');
+    const oneHourAgo = now.clone().add('-1', 'hour');
+    // 24 時台と、毎時 0 〜 39 分に実行されるときの調整
+    // はなこさんのデータは毎時 30 分頃に更新されるため、40 分より前の場合は 1 時間前のデータを取得
+    const dateData =
+        hourNow === '24'
+            ? yesterday
+            : Number(minuteNow) < 40
+            ? oneHourAgo
+            : now;
     const area: string = '03';
     const checkNumber: string = '16';
     const values: BindValiables = {
         startTime,
-        ddlStartYear: now.format('YYYY'),
-        ddlStartMonth: now.format('M'),
-        ddlStartDay: now.format('D'),
-        ddlStartHour: now.format('k'),
-        ddlEndYear: now.format('YYYY'),
-        ddlEndMonth: now.format('M'),
-        ddlEndDay: now.format('D'),
-        ddlEndHour: now.format('k'),
+        ddlStartYear: dateData.format('YYYY'),
+        ddlStartMonth: dateData.format('M'),
+        ddlStartDay: dateData.format('D'),
+        ddlStartHour: dateData.format('k'),
+        ddlEndYear: dateData.format('YYYY'),
+        ddlEndMonth: dateData.format('M'),
+        ddlEndDay: dateData.format('D'),
+        ddlEndHour: dateData.format('k'),
         ddlArea: area,
         // CheckBoxMstList%2416 これだけキーを変数にする
         checkBoxMstList: `CheckBoxMstList${encodeURI(`\$${checkNumber}`)}`,
