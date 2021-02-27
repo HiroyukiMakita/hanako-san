@@ -1,0 +1,14 @@
+
+# -- Dockerfile にて追加、マウント済みのためコンテナ内でも編集可 --
+# cron の起動
+alias startcron='systemctl start crond.service'
+# cron の停止
+alias stopcron='systemctl stop crond.service'
+# cron の再起動
+alias restartcron='systemctl restart crond.service'
+# cron が動いてるか確認
+alias cronstatus='systemctl status crond.service'
+# cron のログを less 表示
+alias cronlogs='journalctl -r -u cron | less'
+# systemd 起動時からのログすべてを less コマンドで表示
+alias systemdlogs='journalctl -b | less'

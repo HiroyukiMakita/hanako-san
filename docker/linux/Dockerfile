@@ -30,3 +30,8 @@ RUN touch /tmp/hanako-san.log && \
     touch /tmp/hanako-san-err.log
 
 COPY package.json /hanako-san/package.json
+
+COPY docker/linux/aliases.txt /hanako-san/docker/linux/aliases.txt
+
+# コンテナ内で利用できるエイリアスを bashrc に追加
+RUN cat /hanako-san/docker/linux/aliases.txt >> ~/.bashrc
