@@ -9,12 +9,12 @@
 - 非常に多め  
 
 の 4 段階の判定ではなこさんが教えてくれます。  
-（判定方法はヤフー天気を参考にしています https://weather.yahoo.co.jp/weather/pollen/3/13/13104/）
+（判定方法はヤフー天気を参考にしています https://weather.yahoo.co.jp/weather/pollen/3/13/13104/ ）
 
 リポジトリを pull 後、プロジェクトルートで `.env` を作成後に、`build & up` するだけで、docker上で cron が動き出す想定です。  
 
 ```
-# 以下を実行後、`.env` の `SLACK_WEBHOOK_URL` を入力・保存
+# 以下を実行後、.env の SLACK_WEBHOOK_URL を入力・保存
 $ cp .env.example .env
 ```
 
